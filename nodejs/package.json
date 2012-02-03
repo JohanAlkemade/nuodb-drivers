@@ -1,0 +1,30 @@
+{ "name" : "db-nuodb"
+, "description" : "NuoDB database bindings for Node.JS"
+, "keywords": ["database","db","native","binding","library","plugin","client","nuodb"]
+, "homepage" : "http://nuodb.github.com/db-nuodb"
+, "version" : "0.1.0"
+, "engines" : { "node" : ">=0.4.1" }
+, "maintainers" :
+  [ { "name": "NuoDB, Inc."
+    , "email": "rbuck@nuodb.com"
+    }
+  ]
+, "bugs" : { "url" : "http://github.com/nuodb/node-db-nuodb/issues" }
+, "licenses" : [ { "type" : "MIT" } ]
+, "repositories" :
+  [ { "type" : "git"
+    , "url" : "https://github.com/nuodb/node-db-nuodb.git"
+    }
+  ]
+, "main" : "./db-nuodb"
+, "scripts" :
+  { "install": "node-waf configure build"
+  , "preuninstall": "rm -rf build/*"
+  , "test" : "node-waf test"
+  , "doc" : "node-waf doc"
+  }
+, "devDependencies" :
+  { "nodeunit" : "*"
+  , "nodelint" : "*"
+  }
+}

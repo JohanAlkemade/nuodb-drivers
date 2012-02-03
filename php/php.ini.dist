@@ -1,0 +1,4 @@
+; Enable NuoDB extension module
+extension=nuodb.so
+;nuodb.trace = 1
+;nuodb.debug = 1

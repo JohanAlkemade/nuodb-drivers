@@ -1,0 +1,12 @@
+ - there is a segmentation fault on Linux64 when the Zend engine checks for
+   leaks at shutdown.
+ - should be written in C instead of C++.
+ - rewrite as a PDO.
+
+
+ - check and implement if needed variable thread safeness (results vector, conn_map)
+ - implement nuodb_autocommit (or nuodb_parameters)
+ - implement nuodb_affected_rows
+ - add other data types (BLOBS/Integer/etc)
+ - tests
+ - docs

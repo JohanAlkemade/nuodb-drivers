@@ -1,0 +1,5 @@
+rm -fr CMakeCache.txt CMakeFiles php_nuodb.dir Makefile cmake_install.cmake .libs libphp_nuodb.so
+cmake -g "Unix Makefile" -D NUODB_ROOT=/opt/nuodb -D PHP_INCLUDE=/usr/local/include/php .
+make
+sudo cp libphp_nuodb.so /usr/local/lib/php/extensions/no-debug-zts-20090626/
+php tests/simpletest.php
