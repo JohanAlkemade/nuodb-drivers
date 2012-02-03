@@ -1,11 +1,41 @@
+![NuoDB Drivers and Language Integrations](https://secure.gravatar.com/avatar/3441a3bcc3a4c29d13c2bca6d7ba93c0?s=140&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-orgs.png "NuoDB Database Drivers")
+
+Community and Support
+=====================
+
+All questions should be posted to support.
+
+When posting messages to support, please include the following:
+
+* What OS/CPU/archicture you're using (e.g. Windows 7 64-bit)
+* Crash logs, if any
+* Example use case
+* What versions you are using
 
 Available Drivers
 =================
 
-* [Node.js node-db native drivers.](nuodb-drivers/nodejs)
-* [PHP A node-db compatible driver for Node.js applications.](nuodb-drivers/php)
-* [Ruby, JRuby, AREL, and ActiveRecord compatible drivers.](nuodb-drivers/ruby)
+* [Node.js](nuodb-drivers/tree/master/nodejs) - A Node.js node-db compatible native driver for NuoDB.
+* [PHP ](nuodb-drivers/tree/master/php) - A PHP compatible native driver for NuoDB.
+* [Ruby](nuodb-drivers/tree/master/ruby) - A Ruby native driver, a JRuby driver, AREL integration, and ActiveRecord driver, for NuoDB.
 
 Using the Libraries
+===================
 
-* [Getting Started with Node.js](nuodb-drivers/tree/master/nodejs/README.md) A node-db compatible driver for Node.js applications.
+* [Getting Started with the Node.js Driver](nuodb-drivers/tree/master/nodejs/README.md) A native driver for node-db compatible Node.js applications.
+* [Getting Started with the PHP Driver](nuodb-drivers/tree/master/php/README.md) A native driver for PHP applications.
+* [Getting Started with the Ruby Drivers](nuodb-drivers/tree/master/ruby/README.md) A native driver and other integrations for DBD, AREL, and ActiveRecord applications.
+
+Contributing 
+============
+
+You're encouraged to contribute to nuodb-drivers.
+
+TBD more here...
+
+License
+=======
+
+These libraries is provided under the TBD license.
+
+TBD more here...
