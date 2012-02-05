@@ -9,7 +9,7 @@ on Windows 32-bits.
 
 ## BUILDING ##
 
-Two scripts are provided: do_win32.bat and do_linux. These scripts will
+Two scripts are provided: do_win32.bat and do_linux64. These scripts will
 clean out old files, run cmake, then make, then install the PHP extension,
 and then run the tests/simpletest.php
 
@@ -22,12 +22,12 @@ do_win32.bat
 For Linux run:
 
 ```bash
-./do_linux
+./do_linux64
 ```
 
 ## INSTALL ##
 
-TBD by Tom Gates
+Installation happens automatically when you run the build script.
 
 ## QUICK START ##
 
