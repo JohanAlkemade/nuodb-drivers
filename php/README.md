@@ -7,6 +7,16 @@ This interface is written as a PHP extension.  It uses CMake to build.
 It has been tested using g++ on Linux 64-bit and Visual Studio 2008 
 on Windows 32-bits.
 
+## PREREQUISITES ##
+
+TODO: TOM
+
+Please document how to build this; apparently there are some prerequisites.
+What in addition to these are required?
+
+  sudo apt-get install php5
+  sudo apt-get install php5-dev
+
 ## BUILDING ##
 
 Two scripts are provided: do_win32.bat and do_linux64. These scripts will
@@ -28,6 +38,9 @@ For Linux run:
 ## INSTALL ##
 
 Installation happens automatically when you run the build script.
+
+TBD Tom - please document running CPack and document how to install the
+built binaries.
 
 ## QUICK START ##
 
