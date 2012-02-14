@@ -39,9 +39,9 @@ def configure(conf):
   if nuodb_lib:
       conf.env.append_unique('LINKFLAGS', [ '-L' + nuodb_lib ])
 
-  conf.env.append_unique('LINKFLAGS', ['-lNuoRemote'])
-  conf.check(header_name="Connection.h", errmsg="Missing include files for NuoDB", mandatory=True)
-  conf.check_cxx(lib="NuoRemote", errmsg="Missing libNuoRemote", mandatory=True)
+  conf.env.append_unique('LINKFLAGS', ['-lNuoSqlApi'])
+  conf.check(header_name="nuodb/sqlapi/SqlConnection.h", errmsg="Missing include files for NuoDB", mandatory=True)
+  conf.check_cxx(lib="NuoSqlApi", errmsg="Missing libNuoSqlApi", mandatory=True)
 
 def build(bld):
   obj = bld.new_task_gen("cxx", "shlib", "node_addon")
