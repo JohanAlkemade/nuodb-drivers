@@ -75,7 +75,7 @@ node_db::Result::Column::type_t node_db_nuodb::Result::Column::getType() const {
     return this->type;
 }
 
-node_db_nuodb::Result::Result(::Statement* statement) throw(node_db::Exception&)
+node_db_nuodb::Result::Result(nuodb::sqlapi::SqlStatement* statement) throw(node_db::Exception&)
     : columns(NULL),
     totalColumns(0),
     rowNumber(0),

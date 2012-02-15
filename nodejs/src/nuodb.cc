@@ -1,5 +1,7 @@
 // Copyright 2012 NuoDB, Inc.
 #include "./nuodb.h"
+#include "./connection.h"
+#include "./query.h"
 
 v8::Persistent<v8::FunctionTemplate> node_db_nuodb::NuoDB::constructorTemplate;
 
@@ -32,7 +34,7 @@ v8::Handle<v8::Value> node_db_nuodb::NuoDB::New(const v8::Arguments& args) {
 
     node_db_nuodb::NuoDB* binding = new node_db_nuodb::NuoDB();
     if (binding == NULL) {
-        THROW_EXCEPTION("Can't create client object")
+        THROW_EXCEPTION("Can't create environment object")
     }
 
     if (args.Length() > 0) {
