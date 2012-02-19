@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>wscript</string>
+	<string>src/connection.cc</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -19,9 +19,7 @@
 					<key>filename</key>
 					<string>wscript</string>
 					<key>lastUsed</key>
-					<date>2012-02-16T13:48:40Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2012-02-17T19:47:21Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -51,19 +49,21 @@
 					<key>filename</key>
 					<string>src/connection.cc</string>
 					<key>lastUsed</key>
-					<date>2012-02-16T13:48:40Z</date>
+					<date>2012-02-17T19:47:26Z</date>
+					<key>selected</key>
+					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>src/connection.h</string>
 					<key>lastUsed</key>
-					<date>2012-02-15T23:34:06Z</date>
+					<date>2012-02-17T19:47:26Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>lib/node-db/binding.h</string>
 					<key>lastUsed</key>
-					<date>2012-02-15T00:25:05Z</date>
+					<date>2012-02-17T19:47:23Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -211,6 +211,20 @@
 			<key>firstVisibleLine</key>
 			<integer>138</integer>
 		</dict>
+		<key>lib/node-db/binding.h</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>16</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>lib/node-db/connection.cc</key>
 		<dict>
 			<key>caret</key>
@@ -230,14 +244,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>24</integer>
+				<integer>86</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>18</integer>
+			<integer>41</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>81</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>86</integer>
+			</dict>
 		</dict>
 		<key>src/connection.h</key>
 		<dict>
@@ -369,6 +399,7 @@
 	<key>openDocuments</key>
 	<array>
 		<string>wscript</string>
+		<string>lib/node-db/binding.h</string>
 		<string>db-nuodb.js</string>
 		<string>src/nuodb_bindings.cc</string>
 		<string>src/nuodb.h</string>

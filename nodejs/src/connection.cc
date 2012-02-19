@@ -8,7 +8,7 @@
 #include "nuodb/stdint.h"
 #include "nuodb/sqlapi/SqlExceptions.h"
 #include "nuodb/sqlapi/SqlEnvironment.h"
-#include "nuodb/sqlapi/SqlPreparedStatement.h"
+#include "nuodb/sqlapi/SqlStatement.h"
 #include "nuodb/sqlapi/SqlDatabaseMetaData.h"
 
 node_db_nuodb::Connection::Connection()
@@ -87,6 +87,14 @@ std::string node_db_nuodb::Connection::version() const {
 }
 
 node_db::Result* node_db_nuodb::Connection::query(const std::string& query) const throw(node_db::Exception&) {
+    using namespace nuodb::sqlapi;
     ConnectionHandle * instance = reinterpret_cast<ConnectionHandle*>(handle);
-    return new node_db_nuodb::Result(instance->connection.createPreparedStatement(query.c_str()));
+    try {
+        SqlStatement & statement = instance->connection.createStatement();
+        node_db_nuodb::Result * result = new node_db_nuodb::Result(statement.executeQuery(query.c_str()));
+        statement.release();
+        return result;
+    } catch(ErrorCodeException & ex) {
+        throw node_db::Exception(ex.what());
+    }
 }

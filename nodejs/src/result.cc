@@ -1,58 +1,23 @@
 // Copyright 2012 NuoDB, Inc.
 #include "./result.h"
 
-#include <Connection.h>
+#include "nuodb/sqlapi/SqlDate.h"
 
-node_db_nuodb::Result::Column::Column(ResultSetMetaData* metaData, int index) {
+node_db_nuodb::Result::Column::Column(nuodb::sqlapi::SqlMetaData & metaData) {
     this->binary = false;
-    this->name = metaData->getColumnName(index);
 
-    switch (metaData->getColumnType(index)) {
-        case 1:
-        case 2:
-        case 3:
-            this->type = STRING;
+    using namespace nuodb::sqlapi;
+    switch (metaData.getType()) {
+        case SQL_DOUBLE:
+            this->type = NUMBER;
             break;
-        case 4:
-        case 5:
-        case 6:
-        case 17:
+        case SQL_INTEGER:
             this->type = INT;
             break;
-        case 7:
-        case 8:
-            this->type = NUMBER;
-            break;
-        case 9:
-            this->type = DATE;
-            break;
-        case 11:
-            this->type = TIME;
-            break;
-        case 15:
-        case 10:
+        case SQL_DATE:
+        case SQL_TIME:
+        case SQL_DATETIME:
             this->type = DATETIME;
-            break;
-        case 12:
-        case 13:
-        case 14:
-        case 16:
-            this->type = TEXT;
-            this->binary = true;
-            break;
-        case 18:
-            this->type = NUMBER;
-            break;
-        case 19:
-            this->type = TEXT;
-            break;
-        case 20:
-        case 21:
-            this->type = TEXT;
-            this->binary = true;
-            break;
-        case 22:
-            this->type = BOOL;
             break;
         default:
             this->type = STRING;
@@ -75,57 +40,48 @@ node_db::Result::Column::type_t node_db_nuodb::Result::Column::getType() const {
     return this->type;
 }
 
-node_db_nuodb::Result::Result(nuodb::sqlapi::SqlStatement* statement) throw(node_db::Exception&)
+node_db_nuodb::Result::Result(nuodb::sqlapi::SqlResultSet & results) throw(node_db::Exception&)
     : columns(NULL),
     totalColumns(0),
     rowNumber(0),
     empty(true),
-    statement(statement),
-    resultSet(NULL),
+    resultSet(results),
     previousColumnLengths(NULL),
     previousRow(NULL),
     nextColumnLengths(NULL),
     nextRow(NULL) {
 
+    using namespace nuodb::sqlapi;
     try {
-        try {
-            this->statement->execute();
-            this->resultSet = this->statement->getResultSet();
-        } catch(SQLException& ex) {
-            throw node_db::Exception(ex.getText());
+        this->empty = false;
+        this->totalColumns = resultSet.getColumnCount();
+
+        this->previousColumnLengths = new unsigned long[this->totalColumns];
+        if (this->previousColumnLengths == NULL) {
+            throw node_db::Exception("Could not create buffer for column lengths");
         }
 
-        if (this->resultSet != NULL) {
-            ResultSetMetaData* metaData = this->resultSet->getMetaData();
-
-            this->empty = false;
-            this->totalColumns = metaData->getColumnCount();
-
-            this->previousColumnLengths = new unsigned long[this->totalColumns];
-            if (this->previousColumnLengths == NULL) {
-                throw node_db::Exception("Could not create buffer for column lengths");
-            }
-
-            this->nextColumnLengths = new unsigned long[this->totalColumns];
-            if (this->nextColumnLengths == NULL) {
-                throw node_db::Exception("Could not create buffer for column lengths");
-            }
-
-            this->columns = new Column*[this->totalColumns];
-            if (this->columns == NULL) {
-                throw node_db::Exception("Could not allocate storage for columns");
-            }
-
-            for (uint16_t i = 0; i < this->totalColumns; i++) {
-                this->columns[i] = new Column(metaData, i);
-                if (this->columns[i] == NULL) {
-                    this->totalColumns = i;
-                    throw node_db::Exception("Could not allocate storage for column");
-                }
-            }
-
-            this->nextRow = this->row(this->nextColumnLengths);
+        this->nextColumnLengths = new unsigned long[this->totalColumns];
+        if (this->nextColumnLengths == NULL) {
+            throw node_db::Exception("Could not create buffer for column lengths");
         }
+
+        this->columns = new Column*[this->totalColumns];
+        if (this->columns == NULL) {
+            throw node_db::Exception("Could not allocate storage for columns");
+        }
+
+        for (uint16_t i = 0; i < this->totalColumns; i++) {
+            SqlMetaData & metaData = this->resultSet.getMetaData(i);
+            this->columns[i] = new Column(metaData);
+            if (this->columns[i] == NULL) {
+                this->totalColumns = i;
+                throw node_db::Exception("Could not allocate storage for column");
+            }
+            metaData.release();
+        }
+
+        this->nextRow = this->row(this->nextColumnLengths);
     } catch(...) {
         this->free();
         throw;
@@ -159,15 +115,7 @@ void node_db_nuodb::Result::free() throw() {
 }
 
 void node_db_nuodb::Result::release() throw() {
-    if (this->resultSet != NULL) {
-        this->resultSet->close();
-        this->resultSet = NULL;
-    }
-
-    if (this->statement != NULL) {
-        this->statement->close();
-        this->statement = NULL;
-    }
+    this->resultSet.release();
 }
 
 void node_db_nuodb::Result::freeRow(char** row) throw() {
@@ -206,10 +154,15 @@ unsigned long* node_db_nuodb::Result::columnLengths() throw(node_db::Exception&)
     return this->previousColumnLengths;
 }
 
+#define Get_year(od) (((od)->century - 100) * 100 + ((od)->year - 100))
+#define Get_month(od) ((od)->month)
+#define Get_day(od) ((od)->day)
+#define Get_hour(od) ((od)->hour - 1)
+#define Get_minute(od) ((od)->minute - 1)
+#define Get_second(od) ((od)->second - 1)
+
 char** node_db_nuodb::Result::row(unsigned long* rowColumnLengths) throw(node_db::Exception&) {
-    if (this->resultSet == NULL) {
-        throw node_db::Exception("No ResultSet");
-    } else if (!this->resultSet->next()) {
+    if (!this->resultSet.next()) {
         return NULL;
     }
 
@@ -222,39 +175,33 @@ char** node_db_nuodb::Result::row(unsigned long* rowColumnLengths) throw(node_db
         }
 
         for (c=0; c < this->totalColumns; c++) {
-            if (this->columns[c]->isBinary()) {
-                ::Blob blob = this->resultSet->getBlob(c + 1);
-                rowColumnLengths[c] = blob.length();
-
-                row[c] = new char[rowColumnLengths[c]];
-                if (row[c] == NULL) {
-                    throw node_db::Exception("Could not allocate buffer for row column");
+            std::string string;
+            if (this->columns[c]->getType() == Column::DATETIME) {
+                nuodb::sqlapi::SqlDate const * date = this->resultSet.getDate(c + 1);
+                if (date == NULL) {
+                    rowColumnLengths[c] = 0;
+                    row[c] = NULL;
+                    continue;
                 }
 
-                blob.read(rowColumnLengths[c], (unsigned char*) row[c], rowColumnLengths[c]);
+                time_t when = (time_t) date->getTime();
+                tm * time = gmtime(&when);
+
+                char buffer [80];
+                strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", time);
+
+                string = buffer;
             } else {
-                std::string string;
-                if (this->columns[c]->getType() == Column::DATETIME) {
-                    nuodb::occi::Date date = this->resultSet->getDate(c + 1);
-                    if (date.isNull()) {
-                        rowColumnLengths[c] = 0;
-                        row[c] = NULL;
-                        continue;
-                    }
-
-                    string = date.toText("YYYY-MM-DD HH24:MI:SS");
-                } else {
-                    string = this->resultSet->getString(c + 1);
-                }
-
-                rowColumnLengths[c] = string.length();
-                row[c] = new char[rowColumnLengths[c]];
-                if (row[c] == NULL) {
-                    throw node_db::Exception("Could not allocate buffer for row column");
-                }
-
-                memcpy(row[c], string.c_str(), rowColumnLengths[c]);
+                string = this->resultSet.getString(c + 1);
             }
+
+            rowColumnLengths[c] = string.length();
+            row[c] = new char[rowColumnLengths[c]];
+            if (row[c] == NULL) {
+                throw node_db::Exception("Could not allocate buffer for row column");
+            }
+
+            memcpy(row[c], string.c_str(), rowColumnLengths[c]);
         }
     } catch(...) {
         if (row != NULL) {
@@ -286,7 +233,7 @@ node_db_nuodb::Result::Column* node_db_nuodb::Result::column(uint16_t i) const t
 }
 
 uint64_t node_db_nuodb::Result::affectedCount() const throw() {
-    return this->statement->getUpdateCount();
+    return 0; // not possible without restreaming an entirely new result set across the network
 }
 
 uint64_t node_db_nuodb::Result::insertId() const throw(node_db::Exception&) {
