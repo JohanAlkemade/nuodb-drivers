@@ -17,7 +17,7 @@ class Result : public node_db::Result {
     public:
         class Column : public node_db::Result::Column {
             public:
-                explicit Column(nuodb::sqlapi::SqlMetaData & metaData, int index);
+                explicit Column(nuodb::sqlapi::SqlMetaData & metaData);
                 ~Column();
                 bool isBinary() const;
                 std::string getName() const;
@@ -29,7 +29,7 @@ class Result : public node_db::Result {
                 bool binary;
         };
 
-        explicit Result(nuodb::sqlapi::SqlPreparedStatement & statement) throw(node_db::Exception&);
+        explicit Result(nuodb::sqlapi::SqlResultSet & results) throw(node_db::Exception&);
         ~Result();
         void release() throw();
         bool hasNext() const throw();
@@ -54,8 +54,7 @@ class Result : public node_db::Result {
         void free() throw();
 
     private:
-        class nuodb::sqlapi::SqlPreparedStatement* statement;
-        class nuodb::sqlapi::SqlResultSet* resultSet;
+        nuodb::sqlapi::SqlResultSet & resultSet;
         unsigned long* previousColumnLengths;
         char** previousRow;
         unsigned long* nextColumnLengths;

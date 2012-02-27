@@ -8,7 +8,8 @@
 #include "nuodb/stdint.h"
 #include "nuodb/sqlapi/SqlExceptions.h"
 #include "nuodb/sqlapi/SqlEnvironment.h"
-#include "nuodb/sqlapi/SqlPreparedStatement.h"
+#include "nuodb/sqlapi/SqlStatement.h"
+#include "nuodb/sqlapi/SqlDatabaseMetaData.h"
 
 node_db_nuodb::Connection::Connection()
     : handle(0) {
@@ -77,10 +78,23 @@ std::string node_db_nuodb::Connection::escape(const std::string& string) const t
 }
 
 std::string node_db_nuodb::Connection::version() const {
-    return this->connection->getMetaData()->getDatabaseProductVersion();
+    using namespace nuodb::sqlapi;
+    ConnectionHandle * instance = reinterpret_cast<ConnectionHandle*>(handle);
+    SqlDatabaseMetaData & metadata = instance->connection.getMetaData();
+    std::string version = metadata.getDatabaseVersion();
+    metadata.release();
+    return version;
 }
 
 node_db::Result* node_db_nuodb::Connection::query(const std::string& query) const throw(node_db::Exception&) {
+    using namespace nuodb::sqlapi;
     ConnectionHandle * instance = reinterpret_cast<ConnectionHandle*>(handle);
-    return new node_db_nuodb::Result(instance->connection.createPreparedStatement(query.c_str()));
+    try {
+        SqlStatement & statement = instance->connection.createStatement();
+        node_db_nuodb::Result * result = new node_db_nuodb::Result(statement.executeQuery(query.c_str()));
+        statement.release();
+        return result;
+    } catch(ErrorCodeException & ex) {
+        throw node_db::Exception(ex.what());
+    }
 }

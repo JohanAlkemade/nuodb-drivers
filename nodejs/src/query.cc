@@ -56,19 +56,14 @@ v8::Handle<v8::Value> node_db_nuodb::Query::Limit(const v8::Arguments& args) {
     query->sql.str("");
     query->sql.clear();
 
-    uint32_t start = args[0]->ToInt32()->Value(), end = 0;
+    uint32_t offset = args[0]->ToInt32()->Value(), rows = 0;
     if (args.Length() > 1) {
-        end = args[1]->ToInt32()->Value();
-    } else if (start > 1) {
-        end = start;
-        start = 1;
+        rows = args[1]->ToInt32()->Value();
     }
 
-    query->sql << "SELECT * FROM (" << currentSql << ") WHERE ROWNUM";
-    if (start > 1 || end > 0) {
-        query->sql << " BETWEEN " << start << " AND " << end;
-    } else {
-        query->sql << "=" << start;
+    query->sql << "SELECT * FROM (" << currentSql << ") OFFSET " << offset << " ROWS";
+    if (rows > 0) {
+        query->sql << " FETCH NEXT " << rows << " ROWS ONLY ";
     }
 
     return scope.Close(args.This());
