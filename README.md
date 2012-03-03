@@ -31,7 +31,35 @@ Contributing
 
 You're encouraged to contribute to nuodb-drivers.
 
-TBD more here...
+## USING GIT ##
+
+When contributing to this project, please verify these specific Git
+settings are configured for your Git client:
+
+```bash
+git config --global user.name "First Last"
+git config --global user.email name@server.com
+git config --global rerere.enabled true
+git config --global branch.autosetuprebase always
+git config --global core.autocrlf false
+git config --global log.date iso
+git config --global merge.log true
+git config --global color.diff auto
+git config --global color.status auto
+git config --global color.branch auto
+```
+
+To retrieve the sources from GitHub use the following Git command:
+
+```bash
+  git clone git@github.com:nuodb/nuodb-api.git
+```
+
+Everytime there after you only need to run the following command:
+
+```bash
+  git pull
+```
 
 License
 =======
