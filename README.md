@@ -34,7 +34,8 @@ You're encouraged to contribute to nuodb-drivers.
 ## USING GIT ##
 
 When contributing to this project, please verify these specific Git
-settings are configured for your Git client:
+settings are configured for your Git client, appropriately setting your
+name and email:
 
 ```bash
 git config --global user.name "First Last"
@@ -52,7 +53,7 @@ git config --global color.branch auto
 To retrieve the sources from GitHub use the following Git command:
 
 ```bash
-  git clone git@github.com:nuodb/nuodb-api.git
+  git clone git@github.com:nuodb/nuodb-drivers.git
 ```
 
 Everytime there after you only need to run the following command:
