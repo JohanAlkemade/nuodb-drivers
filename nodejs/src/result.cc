@@ -3,8 +3,8 @@
 
 #include "nuodb/sqlapi/SqlDate.h"
 
-node_db_nuodb::Result::Column::Column(nuodb::sqlapi::SqlColumnMetaData & metaData) {
-    this->binary = false;
+node_db_nuodb::Result::Column::Column(nuodb::sqlapi::SqlColumnMetaData & metaData)
+    : name(metaData.getColumnName()), type(STRING), binary(false) {
 
     using namespace nuodb::sqlapi;
     switch (metaData.getType()) {
@@ -19,6 +19,7 @@ node_db_nuodb::Result::Column::Column(nuodb::sqlapi::SqlColumnMetaData & metaDat
         case SQL_DATETIME:
             this->type = DATETIME;
             break;
+        case SQL_STRING:
         default:
             this->type = STRING;
             break;
