@@ -6,7 +6,7 @@ database bindings visit the [Node.js db-nuodb homepage] [homepage].
 ## BUILDING ##
 
 ```bash
-git submodule update
+git submodule update --init
 
 export PATH=/usr/local/bin:$PATH
 export NODE_PATH=/usr/local/bin/node
@@ -34,6 +34,25 @@ Once the environment variables are set, install with npm:
 ```bash
 $ npm install db-nuodb
 ```
+
+## QUICK CHECK ##
+
+Run the following command to verify the shared library can be loaded by node:
+
+```bash
+$ node
+````
+
+In node run the following Javascript commands, then CTRL-C twice to exit:
+
+```javascript
+> var mod = require('./db-nuodb');
+undefined
+> mod;
+{}
+> 
+(^C again to quit)
+````
 
 ## QUICK START ##
 

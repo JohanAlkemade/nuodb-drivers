@@ -3,7 +3,7 @@
 
 #include "nuodb/sqlapi/SqlDate.h"
 
-node_db_nuodb::Result::Column::Column(nuodb::sqlapi::SqlMetaData & metaData) {
+node_db_nuodb::Result::Column::Column(nuodb::sqlapi::SqlColumnMetaData & metaData) {
     this->binary = false;
 
     using namespace nuodb::sqlapi;
@@ -72,7 +72,7 @@ node_db_nuodb::Result::Result(nuodb::sqlapi::SqlResultSet & results) throw(node_
         }
 
         for (uint16_t i = 0; i < this->totalColumns; i++) {
-            SqlMetaData & metaData = this->resultSet.getMetaData(i);
+            SqlColumnMetaData & metaData = this->resultSet.getMetaData(i);
             this->columns[i] = new Column(metaData);
             if (this->columns[i] == NULL) {
                 this->totalColumns = i;

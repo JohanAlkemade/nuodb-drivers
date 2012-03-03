@@ -10,14 +10,14 @@
 #include "./node-db/result.h"
 
 #include "nuodb/sqlapi/SqlResultSet.h"
-#include "nuodb/sqlapi/SqlMetaData.h"
+#include "nuodb/sqlapi/SqlColumnMetaData.h"
 
 namespace node_db_nuodb {
 class Result : public node_db::Result {
     public:
         class Column : public node_db::Result::Column {
             public:
-                explicit Column(nuodb::sqlapi::SqlMetaData & metaData);
+                explicit Column(nuodb::sqlapi::SqlColumnMetaData & metaData);
                 ~Column();
                 bool isBinary() const;
                 std::string getName() const;
