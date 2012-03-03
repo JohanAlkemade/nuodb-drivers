@@ -17,6 +17,7 @@ Available Drivers
 
 * [Node.js](nuodb-drivers/tree/master/nodejs) - A Node.js node-db compatible native driver for NuoDB.
 * [PHP ](nuodb-drivers/tree/master/php) - A PHP compatible native driver for NuoDB.
+* [PHP PDO ](nuodb-drivers/tree/master/php_pdo) - A PHP PDO driver for NuoDB.
 * [Ruby](nuodb-drivers/tree/master/ruby) - A Ruby native driver, a JRuby driver, AREL integration, and ActiveRecord driver, for NuoDB.
 
 Using the Libraries
@@ -24,6 +25,7 @@ Using the Libraries
 
 * [Getting Started with the Node.js Driver](nuodb-drivers/tree/master/nodejs/README.md) A native driver for node-db compatible Node.js applications.
 * [Getting Started with the PHP Driver](nuodb-drivers/tree/master/php/README.md) A native driver for PHP applications.
+* [Getting Started with the PHP PDO Driver](nuodb-drivers/tree/master/php_pdo/README.md) A PDO driver for PHP applications.
 * [Getting Started with the Ruby Drivers](nuodb-drivers/tree/master/ruby/README.md) A native driver and other integrations for DBD, AREL, and ActiveRecord applications.
 
 Contributing 
