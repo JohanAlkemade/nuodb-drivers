@@ -73,6 +73,28 @@ nmake install > make_debug_install.log 2>&1
 
 
 
+Procedure to build PHP with the PDO Driver on Linux 64-bit
+==============================================================
+#!/bin/csh
+setenv NUODB_DRIVERS_ROOT ~/nuodb/nuodb-drivers
+setenv PHP_AUTOCONF /usr/bin/autoconf2.59
+setenv CPPFLAGS -I/home/tgates/nuodb/NuoSqlApi/NuoSqlApi-1.0.0-Linux/include
+cd ~/
+echo "remove old dir..."
+rm -fr ~/php-5.3.10
+echo "untar..."
+zcat $NUODB_DRIVERS_ROOT/php_sources_tools/php-5.3.10.tar.gz | tar xf -
+cd ~/php-5.3.10
+echo "symlink pdo_nuodb..."
+ln -s $NUODB_DRIVERS_ROOT/php_pdo/pdo_nuodb ext/pdo_nuodb
+./buildconf --force
+echo "configure..."
+./configure --disable-all --enable-cli --enable-pdo --with-pdo_nuodb >& configure.log
+echo "make..."
+make >& make.log
+echo "make test..."
+setenv NO_INTERACTION 1
+make test >& make_test.log
 
 
 
