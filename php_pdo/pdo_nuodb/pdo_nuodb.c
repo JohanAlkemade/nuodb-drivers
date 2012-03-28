@@ -25,8 +25,8 @@
 #include "php.h"
 #include "php_ini.h"
 #include "ext/standard/info.h"
-#include "pdo/php_pho.h"
-#include "pdo/php_pdo_driver.h"
+#include "ext/pdo/php_pdo.h"
+#include "ext/pdo/php_pdo_driver.h"
 #include "php_pdo_nuodb.h"
 #include "php_pdo_nuodb_int.h"
 
@@ -63,7 +63,7 @@ static const zend_module_dep pdo_nuodb_deps[] = {
 zend_module_entry pdo_nuodb_module_entry = {
 #if ZEND_MODULE_API_NO >= 20010901
 	STANDARD_MODULE_HEADER_EX, NULL,
-	pdo_nuodn_deps,
+	pdo_nuodb_deps,
 #endif
 	"pdo_nuodb",
 	pdo_nuodb_functions,
