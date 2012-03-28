@@ -35,40 +35,9 @@ You're encouraged to contribute to nuodb-drivers. Contribution Guidelines are pr
 
 * [Contribution Guidelines](nuodb-drivers/tree/master/CONTRIBUTING.md)
 
-## USING GIT ##
-
-When contributing to this project, please verify these specific Git
-settings are configured for your Git client, appropriately setting your
-name and email:
-
-```bash
-git config --global user.name "First Last"
-git config --global user.email name@server.com
-git config --global rerere.enabled true
-git config --global branch.autosetuprebase always
-git config --global core.autocrlf false
-git config --global log.date iso
-git config --global merge.log true
-git config --global color.diff auto
-git config --global color.status auto
-git config --global color.branch auto
-```
-
-To retrieve the sources from GitHub use the following Git command:
-
-```bash
-  git clone git@github.com:nuodb/nuodb-drivers.git
-```
-
-Everytime there after you only need to run the following command:
-
-```bash
-  git pull
-```
-
 License
 =======
 
-These libraries is provided under the TBD license.
+These libraries is provided under the BSD license:
 
-TBD more here...
+* [NuoDB Licence](nuodb-drivers/tree/master/LICENSE)
