@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>currentDocument</key>
-	<string>src/connection.cc</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -11,83 +9,85 @@
 			<array>
 				<dict>
 					<key>filename</key>
-					<string>README.md</string>
-					<key>lastUsed</key>
-					<date>2012-02-14T23:57:27Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>wscript</string>
-					<key>lastUsed</key>
-					<date>2012-02-17T19:47:21Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>db-nuodb.js</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T04:45:38Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>src/nuodb_bindings.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T23:32:04Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>src/nuodb.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T23:32:27Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>src/nuodb.h</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T12:57:23Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>src/connection.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-17T19:47:26Z</date>
+					<string>AUTHORS</string>
 					<key>selected</key>
 					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
-					<string>src/connection.h</string>
-					<key>lastUsed</key>
-					<date>2012-02-17T19:47:26Z</date>
+					<string>LICENSE</string>
 				</dict>
 				<dict>
 					<key>filename</key>
-					<string>lib/node-db/binding.h</string>
+					<string>README.md</string>
 					<key>lastUsed</key>
-					<date>2012-02-17T19:47:23Z</date>
+					<date>2012-03-28T20:08:52Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>wscript</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:08:55Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>db-nuodb.js</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:09:04Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>src/nuodb_bindings.cc</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:09:15Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>src/nuodb.cc</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:09:22Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>src/nuodb.h</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:09:41Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>src/connection.cc</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:09:44Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>src/connection.h</string>
+					<key>lastUsed</key>
+					<date>2012-03-28T20:09:49Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>src/query.cc</string>
 					<key>lastUsed</key>
-					<date>2012-02-15T04:44:43Z</date>
+					<date>2012-03-28T20:09:53Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>src/query.h</string>
 					<key>lastUsed</key>
-					<date>2012-02-15T04:44:39Z</date>
+					<date>2012-03-28T20:10:06Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>src/result.cc</string>
 					<key>lastUsed</key>
-					<date>2012-02-15T04:45:30Z</date>
+					<date>2012-03-28T20:10:10Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>src/result.h</string>
 					<key>lastUsed</key>
-					<date>2012-02-15T04:44:38Z</date>
+					<date>2012-03-28T20:10:25Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -97,84 +97,7 @@
 		</dict>
 		<dict>
 			<key>children</key>
-			<array>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/binding.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T23:34:06Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/binding.h</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/connection.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T23:33:33Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/connection.h</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/events.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T00:50:37Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/events.h</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/exception.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-14T23:55:17Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/exception.h</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/node_defs.h</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T00:26:40Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/query.cc</string>
-					<key>lastUsed</key>
-					<date>2012-02-14T23:55:49Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/query.h</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/README.md</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/result.cc</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/result.h</string>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>lib/node-db/tests.js</string>
-					<key>lastUsed</key>
-					<date>2012-02-15T00:41:05Z</date>
-				</dict>
-			</array>
-			<key>expanded</key>
-			<true/>
+			<array/>
 			<key>name</key>
 			<string>node-db</string>
 		</dict>
@@ -182,240 +105,10 @@
 	<key>fileHierarchyDrawerWidth</key>
 	<integer>200</integer>
 	<key>metaData</key>
-	<dict>
-		<key>db-nuodb.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>39</integer>
-				<key>line</key>
-				<integer>38</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>lib/node-db/binding.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>41</integer>
-				<key>line</key>
-				<integer>110</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>138</integer>
-		</dict>
-		<key>lib/node-db/binding.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>25</integer>
-				<key>line</key>
-				<integer>16</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>lib/node-db/connection.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>65</integer>
-				<key>line</key>
-				<integer>42</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>43</integer>
-		</dict>
-		<key>src/connection.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>86</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>41</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>81</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>86</integer>
-			</dict>
-		</dict>
-		<key>src/connection.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>33</integer>
-				<key>line</key>
-				<integer>6</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/nuodb.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>34</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>44</integer>
-		</dict>
-		<key>src/nuodb.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>15</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/nuodb_bindings.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/query.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/query.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/result.cc</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>48</integer>
-				<key>line</key>
-				<integer>77</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>src/result.h</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>7</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-		</dict>
-		<key>wscript</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>1</integer>
-				<key>line</key>
-				<integer>3</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-	</dict>
-	<key>openDocuments</key>
-	<array>
-		<string>wscript</string>
-		<string>lib/node-db/binding.h</string>
-		<string>db-nuodb.js</string>
-		<string>src/nuodb_bindings.cc</string>
-		<string>src/nuodb.h</string>
-		<string>src/nuodb.cc</string>
-		<string>src/connection.h</string>
-		<string>src/connection.cc</string>
-		<string>lib/node-db/connection.cc</string>
-		<string>lib/node-db/binding.cc</string>
-		<string>src/result.h</string>
-		<string>src/query.h</string>
-		<string>src/query.cc</string>
-		<string>src/result.cc</string>
-	</array>
+	<dict/>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{327, 96}, {1470, 962}}</string>
+	<string>{{210, 66}, {1470, 962}}</string>
 </dict>
 </plist>

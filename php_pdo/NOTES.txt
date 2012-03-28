@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 The skeleton for this driver was created from a PHP source code tree using the ext_skel_win32.php script.
 
 ------------------------- cut-here -------------------------
@@ -100,3 +101,85 @@ make test >& make_test.log
 
 
 
+=======
+The skeleton for this driver was created from a PHP source code tree using the ext_skel_win32.php script.
+
+------------------------- cut-here -------------------------
+c:\php-sdk\php53dev\vc9\x86\php-5.3.10\ext>php ext_skel_win32.php --extname=pdo_
+nuodb
+Creating directory pdo_nuodb
+Creating basic files: config.m4 config.w32 .svnignore pdo_nuodb.c php_pdo_nuodb.
+h CREDITS EXPERIMENTAL tests/001.phpt pdo_nuodb.php [done].
+
+To use your new extension, you will have to execute the following steps:
+
+1.  $ cd ..
+2.  $ vi ext/pdo_nuodb/config.m4
+3.  $ ./buildconf
+4.  $ ./configure --[with|enable]-pdo_nuodb
+5.  $ make
+6.  $ ./php -f ext/pdo_nuodb/pdo_nuodb.php
+7.  $ vi ext/pdo_nuodb/pdo_nuodb.c
+8.  $ make
+
+Repeat steps 3-6 until you are satisfied with ext/pdo_nuodb/config.m4 and
+step 6 confirms that your module is compiled into PHP. Then, start writing
+code and repeat the last two steps as often as necessary.
+
+
+c:\php-sdk\php53dev\vc9\x86\php-5.3.10\ext>
+------------------------- cut-here -------------------------
+
+
+
+Procedure to build PHP with the PDO Driver on Windows 7 (x86)
+==============================================================
+
+In a Microsoft Windows SDK v7.0 CMD Shell:
+
+setenv /x86 /xp /release
+
+Then set the following environment variable to point to the root of the nuodb-driver:
+
+set NUODB_DRIVERS_ROOT=<path-to>\nuodb-drivers
+
+
+rm -fr  C:\php C:\php-sdk
+mkdir C:\php
+mkdir c:\php-sdk\
+cd C:\php-sdk
+%NUODB_DRIVERS_ROOT%\php_sources_tools\win32_bin\7za.exe x %NUODB_DRIVERS_ROOT%\php_sources_tools\php-sdk-binary-tools-20110915.zip >  php-sdk-binary-tools-20110915_unzip.log
+call bin\phpsdk_setvars.bat
+call bin\phpsdk_buildtree.bat php53dev
+cd php53dev\vc9\x86
+%NUODB_DRIVERS_ROOT%\php_sources_tools\win32_bin\7za.exe x %NUODB_DRIVERS_ROOT%\php_sources_tools\deps-5.3-vc9-x86.7z >  deps-5.3-vc9-x86_unzip.log
+%NUODB_DRIVERS_ROOT%\php_sources_tools\win32_bin\7za.exe x %NUODB_DRIVERS_ROOT%\php_sources_tools\php-5.3.10.tar.gz
+%NUODB_DRIVERS_ROOT%\php_sources_tools\win32_bin\7za.exe x php-5.3.10.tar > php-5.3.10_untar.log
+rm php-5.3.10.tar
+cd php-5.3.10
+set PHP_HOME=C:\php
+set PATH=C:\php-sdk\bin;%PHP_HOME%;%PATH%
+set PHPRC=C:\php-sdk\php53dev\vc9\x86\php-5.3.10
+cp -r %NUODB_DRIVERS_ROOT%\php_pdo\pdo_nuodb ext
+call buildconf
+
+call configure --disable-all --enable-cli --enable-debug-pack --enable-pdo --with-pdo_nuodb
+nmake > make.log 2>&1
+nmake snap > make_snap.log 2>&1
+set NO_INTERACTION=1
+nmake test > make_test.log 2>&1
+nmake install > make_install.log 2>&1
+
+call configure --disable-all --enable-cli --enable-debug --enable-pdo --with-pdo_nuodb
+nmake > make_debug.log 2>&1
+nmake snap > make_debug_snap.log 2>&1
+nmake install > make_debug_install.log 2>&1
+
+
+
+
+
+
+
+
+>>>>>>> a8685335b5e8a254d9d2560db381065c015a6330
