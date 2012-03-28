@@ -21,7 +21,6 @@
 #ifndef PHP_PDO_NUODB_INT_H
 #define PHP_PDO_NUODB_INT_H
 
-#include <Connection.h>
 
 #define PDO_NUODB_VERSION 1
 
@@ -56,9 +55,13 @@ typedef void (*info_func_t)(char*);
 #define min(a,b) ((a)<(b)?(a):(b))
 #endif
 
+#include
+
 typedef struct {
 	/* the connection handle */
-	Connection db;
+	
+	/* NuoDbConnection */ void *db;
+
 
 	/* the transaction handle */
 	int tr;
@@ -85,7 +88,7 @@ typedef struct {
 	pdo_nuodb_db_handle *H;
 	
 	/* the statement handle */
-	Statement stmt;
+	/* NuoSqlStatement */ void *stmt;
 	
 	/* the name of the cursor (if it has one) */
 	char name[32];
