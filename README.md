@@ -31,7 +31,9 @@ Using the Libraries
 Contributing 
 ============
 
-You're encouraged to contribute to nuodb-drivers.
+You're encouraged to contribute to nuodb-drivers. Contribution Guidelines are provided here:
+
+* [Contribution Guidelines](nuodb-drivers/tree/master/CONTRIBUTING.md)
 
 ## USING GIT ##
 
