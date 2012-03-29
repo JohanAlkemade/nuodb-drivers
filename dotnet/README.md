@@ -4,8 +4,9 @@ This is the .NET database provider for [NuoDB](http://www.nuodb.com).
 
 ## License ##
 
-Please refer to the [LICENSE](https://github.com/nuodb/nuodb-drivers/blob/master/LICENSE) provided with this
-distribution.
+This software is provided under the BSD license:
+
+* [LICENSE](/nuodb/nuodb-drivers/tree/master/LICENSE)
 
 ## Requirements ##
 
