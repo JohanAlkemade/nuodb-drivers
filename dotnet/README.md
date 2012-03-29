@@ -8,6 +8,10 @@ This software is provided under the BSD license:
 
 * [LICENSE](nuodb-drivers/tree/master/LICENSE)
 
+## Status ##
+
+The NuoDB .NET Provider is currently _pre-release_ and is under active development, meaning it's pretty much a skeleton of what can be used in a production environment.  Please keep up with the [NuoDB Driver GitHub](https://github.com/nuodb/nuodb-drivers) project for updates.
+
 ## Requirements ##
 
 * Microsoft Visual Studio 2010
