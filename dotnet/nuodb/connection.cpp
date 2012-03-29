@@ -1,3 +1,31 @@
+/*
+	Copyright (c) 2012, NuoDB, Inc.
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+		 * Redistributions of source code must retain the above copyright
+			notice, this list of conditions and the following disclaimer.
+		 * Redistributions in binary form must reproduce the above copyright
+			notice, this list of conditions and the following disclaimer in the
+			documentation and/or other materials provided with the distribution.
+		 * Neither the name of NuoDB, Inc. nor the names of its contributors may
+			be used to endorse or promote products derived from this software
+			without specific prior written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL NUODB, INC. BE LIABLE FOR ANY DIRECT, INDIRECT,
+	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+	LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA,
+	OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #include "stdafx.h"
 
 #include "exception.h"
@@ -13,7 +41,8 @@ NuoDb::NuoDbConnection::NuoDbConnection() :
 	m_database(System::String::Empty),
 	m_schema(System::String::Empty),
 	m_username(System::String::Empty),
-	m_password(System::String::Empty)
+	m_password(System::String::Empty),
+	m_disposed(false)
 {
 }
 
@@ -23,7 +52,8 @@ NuoDb::NuoDbConnection::NuoDbConnection(System::String^ connectionString) :
 	m_database(System::String::Empty),
 	m_schema(System::String::Empty),
 	m_username(System::String::Empty),
-	m_password(System::String::Empty)
+	m_password(System::String::Empty),
+	m_disposed(false)
 {
 	if (System::String::IsNullOrEmpty(connectionString))
 		throw gcnew ArgumentNullException("connectionString");
@@ -35,10 +65,22 @@ NuoDb::NuoDbConnection::NuoDbConnection(System::String^ connectionString) :
 
 NuoDb::NuoDbConnection::~NuoDbConnection()
 {
+	if (m_disposed)
+		return;
+
 	RollbackTransaction();
 
+	this->!NuoDbConnection();
+
+	m_disposed = true;
+}
+
+NuoDb::NuoDbConnection::!NuoDbConnection()
+{
 	if (m_connection != NULL)
 		delete m_connection;
+
+	m_connection = NULL;
 }
 #pragma endregion
 
@@ -50,6 +92,9 @@ void NuoDb::NuoDbConnection::EnlistDistributedTransaction(System::EnterpriseServ
 
 NuoDb::NuoDbCommand^ NuoDb::NuoDbConnection::CreateCommand()
 {
+	if (NULL == m_connection)
+		throw gcnew NuoDbException("The connection is not open.");
+		
 	NuoDbCommand^ c = gcnew NuoDbCommand();
 
 	c->Connection = this;
@@ -59,22 +104,28 @@ NuoDb::NuoDbCommand^ NuoDb::NuoDbConnection::CreateCommand()
 
 void NuoDb::NuoDbConnection::CommitTransaction()
 {
-	if (NULL == m_connection || !m_inTransaction)
+	if (NULL == m_connection)
+		throw gcnew NuoDbException("The connection is not open.");
+		
+	if (!m_inTransaction)
 		return;
 
-	m_connection->ref().commit();
+	m_connection->ref()->commit();
 	m_inTransaction = false;
-	m_connection->ref().setAutoCommit(true);
+	m_connection->ref()->setAutoCommit(true);
 }
 
 void NuoDb::NuoDbConnection::RollbackTransaction()
 {
-	if (NULL == m_connection || !m_inTransaction)
+	if (NULL == m_connection)
+		throw gcnew NuoDbException("The connection is not open.");
+		
+	if (!m_inTransaction)
 		return;
 
-	m_connection->ref().rollback();
+	m_connection->ref()->rollback();
 	m_inTransaction = false;
-	m_connection->ref().setAutoCommit(true);
+	m_connection->ref()->setAutoCommit(true);
 }
 
 void NuoDb::NuoDbConnection::ParseConnectionString()
@@ -155,7 +206,7 @@ void NuoDb::NuoDbConnection::OpenConnection()
 		conn_opts.count = 4;
 		conn_opts.array = opts;
 
-		m_connection = new SqlConnectionWrapper(env.ref().createSqlConnection(&conn_opts));
+		m_connection = new SqlConnectionWrapper(env.ref()->createSqlConnection(&conn_opts));
 	}
 	catch (nuodb::sqlapi::ErrorCodeException& e)
 	{
@@ -187,7 +238,7 @@ String^ NuoDb::NuoDbConnection::ServerVersion::get()
 
 	try
 	{
-		return gcnew System::String(m_connection->ref().getMetaData().getDatabaseVersion());
+		return gcnew System::String(m_connection->ref()->getMetaData()->getDatabaseVersion());
 	}
 	catch (nuodb::sqlapi::ErrorCodeException& e)
 	{
@@ -211,7 +262,7 @@ NuoDb::NuoDbTransaction^ NuoDb::NuoDbConnection::BeginTransaction()
 		throw gcnew NuoDbException("A transaction is already underway.");
 
 	m_inTransaction = true;
-	m_connection->ref().setAutoCommit(false);
+	m_connection->ref()->setAutoCommit(false);
 
 	return gcnew NuoDbTransaction(this, System::Data::IsolationLevel::ReadCommitted);
 }
@@ -228,7 +279,7 @@ NuoDb::NuoDbTransaction^ NuoDb::NuoDbConnection::BeginTransaction(IsolationLevel
 		throw gcnew NuoDbException("The isolation level is unsupported.");
 
 	m_inTransaction = true;
-	m_connection->ref().setAutoCommit(false);
+	m_connection->ref()->setAutoCommit(false);
 	
 	return gcnew NuoDbTransaction(this, isolationLevel);
 }

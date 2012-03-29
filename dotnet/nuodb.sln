@@ -3,6 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DA6B84F9-9DD7-46CC-B947-7B0D632F073F}"
 	ProjectSection(SolutionItems) = preProject
+		global_assembly_info.cpp = global_assembly_info.cpp
 		global_assembly_info.cs = global_assembly_info.cs
 		README.md = README.md
 	EndProjectSection

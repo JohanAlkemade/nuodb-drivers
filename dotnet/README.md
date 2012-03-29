@@ -17,6 +17,5 @@ Using VS2010, open the appropriate solution:
 
 ## License ##
 
-These libraries are provided under the TBD license.
-
-TBD more here...
+These libraries are provided under the license provided with this
+distribution.
