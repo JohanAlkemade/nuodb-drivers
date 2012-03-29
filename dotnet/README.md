@@ -1,6 +1,11 @@
 # NuoDB Database Provider for the Microsoft .NET Framework #
 
-This exposes NuoDB to the Microsoft .NET Framework world.
+This is the .NET database provider for [NuoDB](http://www.nuodb.com).
+
+## License ##
+
+Please refer to the [LICENSE](https://github.com/nuodb/nuodb-drivers/blob/master/LICENSE) provided with this
+distribution.
 
 ## Requirements ##
 
@@ -15,7 +20,6 @@ Using VS2010, open the appropriate solution:
 * **nuodb.sln** - for .NET 4
 * **nuodb35.sln** - for .NET 3.5
 
-## License ##
+## Known Issues ##
 
-These libraries are provided under the license provided with this
-distribution.
+There is a known issue using `msclr::interop::marshal_context` when building for .NET 3.5.
