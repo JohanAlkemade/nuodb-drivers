@@ -38,7 +38,7 @@ using namespace System::Runtime::InteropServices;
 
 [assembly: AssemblyCompany("NuoDB")]
 [assembly: AssemblyProduct("NuoDB .NET Database Provider")]
-[assembly: AssemblyCopyright("NuoDB, Inc.")]
+[assembly: AssemblyCopyright("Copyright (c) 2012, NuoDB, Inc.")]
 [assembly: AssemblyTrademark("NuoDB, Inc.")]
 
 #if DEBUG
