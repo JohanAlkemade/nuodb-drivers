@@ -36,8 +36,8 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyCompany("NuoDB")]
 [assembly: AssemblyProduct("NuoDB .NET Database Provider")]
-[assembly: AssemblyCopyright("(C) NuoDB")]
-[assembly: AssemblyTrademark("NuoDB")]
+[assembly: AssemblyCopyright("Copyright (c) 2012, NuoDB, Inc.")]
+[assembly: AssemblyTrademark("NuoDB, Inc.")]
 
 #if DEBUG
 [assembly: AssemblyConfiguration("Debug")]
