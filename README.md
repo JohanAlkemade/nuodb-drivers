@@ -7,7 +7,7 @@ All questions should be posted to support.
 
 When posting messages to support, please include the following:
 
-* What OS/CPU/archicture you're using (e.g. Windows 7 64-bit)
+* What OS/CPU/architecture you're using (e.g. Windows 7 64-bit)
 * Crash logs, if any
 * Example use case
 * What versions you are using
