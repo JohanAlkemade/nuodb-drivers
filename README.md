@@ -42,4 +42,4 @@ License
 
 These libraries is provided under the BSD license:
 
-* [NuoDB Licence](nuodb-drivers/tree/master/LICENSE)
+* [NuoDB License](nuodb-drivers/tree/master/LICENSE)
